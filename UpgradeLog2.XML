@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="pshr">
+</Property><Property Name="Solution File" Value="C:\inetpub\wwwroot\pshr\pshr.sln">
+</Property><Property Name="Date" Value="30-July-2012">
+</Property><Property Name="Time" Value="09:03">
+</Property><Property Name="Log Number" Value="2">
+</Property></Properties><Event ErrorLevel="2" Project="http://localhost/pshr/pshr.vbproj" Source="http://localhost/pshr/pshr.vbproj" Description="The project path 'C:\inetpub\wwwroot\pshr\pshr.vbproj' does not exist.">
+</Event><Event ErrorLevel="0" Project="" Source="pshr.sln" Description="Solution converted successfully">
+</Event><Event ErrorLevel="3" Project="" Source="pshr.sln" Description="Converted">
+</Event></UpgradeLog>

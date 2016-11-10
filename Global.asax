@@ -1,0 +1,1 @@
+<%@ Application Inherits="pshr.Global" Language="VB" %>

@@ -1,0 +1,29 @@
+conn pshr/phsr
+
+drop table netlogin;
+
+create table netlogin(
+	   eid number(8) constraint uk_netlogin_eid unique,
+	   pwd varchar(30),
+	   qns number(2),
+	   ans varchar(30)
+);
+
+--insert into netlogin values('103659','aaaaa','1','key jane');
+
+--select * from netlogin;
+
+conn system/manager
+
+create user img_pshr identified by img_pshr
+
+grant dba to img_pshr
+
+create table img(
+	empid number(6),
+	photo blob,
+	sign blob,
+	icno varchar2(6),
+	pname varchar2(50), 
+	sname varchar2(50)
+)

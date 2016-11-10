@@ -1,0 +1,77 @@
+﻿This report shows the steps taken to convert your Web application from ASP.NET 1.1 to ASP.NET 2.0. 
+There may be some unresolved conversion issues you will need to manually fix. 
+For more information, please refer to http://go.microsoft.com/fwlink/?LinkId=46995 or search for the help topic "Converting from Visual Studio .NET 2002 or 2003".
+Conversion Started on project file pshr.vbproj at November 22 2009, 07:25:44.
+
+=========================ERRORS===================
+ERROR: Unable to get local copy of file ppo.vb.
+ERROR: The following files were not migrated because they were not found in the project file or the associated 'BuildAction' is set to 'None'.
+You may need to exclude these files from the project after the conversion process in order to compile your web site: 
+File List == backup\pshr\errhandler.aspx,backup\pshr\mailpwd.aspx,backup\pshr\changepwd.aspx,backup\pshr\resetpwd.aspx,
+backup\pshr\findemp.aspx,backup\pshr\empdetail.aspx,backup\pshr\login.aspx,backup\pshr\welcome.aspx,backup\pshr\confirm.aspx,backup\pshr\signup.aspx,
+backup\pshr\global.asax.
+
+=========================WARNINGS=================
+Warning: File C:\WINNT\Microsoft.NET\Framework\v1.1.4322\Ajax.dll not found.
+Warning: 'Referencepath' settings have not been converted.
+
+=========================COMMENTS=================
+Web.Config: Added 'xhtmlConformance' attribute.
+Web.Config: added a reference for assembly CrystalDecisions.Web.
+Web.Config: added a reference for assembly CrystalDecisions.Shared.
+Web.Config: added a reference for assembly CrystalReportPluginLib.
+Web.Config: added a reference for assembly CrystalDecisions.ReportSource.
+Web.Config: added a reference for assembly CrystalDecisions.CrystalReports.Engine.
+Web.Config: added a reference for assembly Oracle.DataAccess.
+Web.Config: added a reference for assembly System.Data.OracleClient.
+Removed attribute Codebehind from file changepwd.aspx.
+Warning: Access level of 'pshr.changepwd' changed to 'Partial' in file changepwd.aspx.vb (Line 20).
+Warning: Removed comment lines before designplaceholder declaration from file changepwd.aspx.vb.    changepwd.aspx.vb (Line 30)
+Removed attribute Codebehind from file confirm.aspx.
+Warning: Access level of 'pshr.confirm' changed to 'Partial' in file confirm.aspx.vb (Line 20).
+Warning: Removed comment lines before designplaceholder declaration from file confirm.aspx.vb.    confirm.aspx.vb (Line 30)
+Added folder App_Code.
+Moved file Dataset1.xsd to the App_Code\ directory.
+Warning: Renamed file App_Code\Dataset1.xsd to file pshr.Dataset1.xsd.
+Removed file Dataset1.vb.
+Removed attribute Codebehind from file empdetail.aspx.
+Warning: Access level of 'pshr.empdetail' changed to 'Partial' in file empdetail.aspx.vb (Line 20).
+Warning: Removed comment lines before designplaceholder declaration from file empdetail.aspx.vb.    empdetail.aspx.vb (Line 30)
+Removed attribute Codebehind from file errhandler.aspx.
+Warning: Access level of 'pshr.errhandler' changed to 'Partial' in file errhandler.aspx.vb (Line 20).
+Warning: Removed comment lines before designplaceholder declaration from file errhandler.aspx.vb.    errhandler.aspx.vb (Line 31)
+Removed attribute Codebehind from file findemp.aspx.
+Warning: Access level of 'pshr.findemp' changed to 'Partial' in file findemp.aspx.vb (Line 17).
+Warning: Removed comment lines before designplaceholder declaration from file findemp.aspx.vb.    findemp.aspx.vb (Line 27)
+Removed attribute Codebehind from file Global.asax.
+Removed attribute Codebehind from file login.aspx.
+Warning: Access level of 'pshr.login' changed to 'Partial' in file login.aspx.vb (Line 20).
+Warning: Removed comment lines before designplaceholder declaration from file login.aspx.vb.    login.aspx.vb (Line 30)
+Removed attribute Codebehind from file mailpwd.aspx.
+Warning: Access level of 'pshr.mailpwd' changed to 'Partial' in file mailpwd.aspx.vb (Line 20).
+Warning: Removed comment lines before designplaceholder declaration from file mailpwd.aspx.vb.    mailpwd.aspx.vb (Line 30)
+Removed attribute Codebehind from file Reportall.aspx.
+Warning: Access level of 'pshr.Reportall' changed to 'Partial' in file Reportall.aspx.vb (Line 3).
+Warning: Removed comment lines before designplaceholder declaration from file Reportall.aspx.vb.    Reportall.aspx.vb (Line 16)
+Removed attribute Codebehind from file Reports.aspx.
+Warning: Access level of 'pshr.Reports' changed to 'Partial' in file Reports.aspx.vb (Line 5).
+Warning: Removed comment lines before designplaceholder declaration from file Reports.aspx.vb.    Reports.aspx.vb (Line 26)
+Removed attribute Codebehind from file resetpwd.aspx.
+Warning: Access level of 'pshr.resetpwd' changed to 'Partial' in file resetpwd.aspx.vb (Line 20).
+Warning: Removed comment lines before designplaceholder declaration from file resetpwd.aspx.vb.    resetpwd.aspx.vb (Line 30)
+Removed attribute Codebehind from file signup.aspx.
+Warning: Access level of 'pshr.signup' changed to 'Partial' in file signup.aspx.vb (Line 20).
+Warning: Removed comment lines before designplaceholder declaration from file signup.aspx.vb.    signup.aspx.vb (Line 30)
+Removed attribute Codebehind from file welcome.aspx.
+Warning: Access level of 'pshr.welcome' changed to 'Partial' in file welcome.aspx.vb (Line 17).
+Warning: Removed comment lines before designplaceholder declaration from file welcome.aspx.vb.    welcome.aspx.vb (Line 27)
+Moved file Global.asax.vb to the App_Code\ directory.
+Warning: Access level of 'moduleOne' changed to 'public' in file moduleOne.vb (Line 22).    moduleOne.vb (Line 22)
+Moved file moduleOne.vb to the App_Code\ directory.
+Moved file AssemblyInfo.vb to the App_Code\ directory.
+Changed HTML validation schema for all projects to 'Internet Explorer 6.0'.
+Removed file Bin\pshr.dll.
+Removed file Bin\pshr.pdb.
+Removed file pshr.vbproj.
+Removed file pshr.vbproj.webinfo.
+Project pshr.vbproj has been converted successfully at November 22 2009, 07:25:56.

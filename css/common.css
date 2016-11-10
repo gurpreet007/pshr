@@ -1,0 +1,1333 @@
+/* Default CSS Stylesheet for a new Web Application project */
+
+BODY
+{
+	font-weight: normal;
+	font-size: 8pt;
+	word-spacing: normal;
+	text-transform: none;
+	font-family: Verdana;
+	letter-spacing: normal;
+	background-color: white;
+}
+
+H1, H2, H3, H4, H5, TH, THEAD, TFOOT
+{
+    COLOR: #003366;
+}
+H1	{	
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size:	2em;
+	font-weight:	700;
+	font-style:	normal;
+	text-decoration:	none;
+	word-spacing:	normal;
+	letter-spacing:	normal;
+	text-transform:	none;
+	}	
+		
+H2	{	
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size:	1.75em;
+	font-weight:	700;
+	font-style:	normal;
+	text-decoration:	none;
+	word-spacing:	normal;
+	letter-spacing:	normal;
+	text-transform:	none;
+	}	
+		
+H3	{	
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size:	1.58em;
+	font-weight:	500;
+	font-style:	normal;
+	text-decoration:	none;
+	word-spacing:	normal;
+	letter-spacing:	normal;
+	text-transform:	none;
+	}	
+		
+H4	{	
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size:	1.33em;
+	font-weight:	500;
+	text-decoration:	none;
+	word-spacing:	normal;
+	letter-spacing:	normal;
+	text-transform:	none;
+	}	
+		
+H5, DT	{	
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size:	1em;
+	font-weight:	700;
+	font-style:	normal;
+	text-decoration:	none;
+	word-spacing:	normal;
+	letter-spacing:	normal;
+	text-transform:	none;
+	}	
+		
+H6	{	
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size:	.8em;
+	font-weight:	700;
+	font-style:	normal;
+	text-decoration:	none;
+	word-spacing:	normal;
+	letter-spacing:	normal;
+	text-transform:	none;
+	}	
+		
+TFOOT, THEAD	{	
+	font-size:	1em;
+	word-spacing:	normal;
+	letter-spacing:	normal;
+	text-transform:	none;
+	font-family: Arial, Helvetica, sans-serif;
+	}	
+		
+TH	{	
+	vertical-align:	baseline;
+	font-size:	1em;
+	font-weight:	bold;
+	word-spacing:	normal;
+	letter-spacing:	normal;
+	text-transform:	none;
+	font-family: Arial, Helvetica, sans-serif;
+	}	
+
+
+A:link
+{
+	font-weight: bold;
+	color: #2f6a94;
+	background-color: #f8f2e4;
+	text-decoration: none;
+}	
+		
+A:visited	{	
+	font-weight: bold;
+	color: #2f6a94;
+	background-color: #f8f2e4;
+	text-decoration: none;
+	}	
+		
+A:active	{	
+	font-weight: bold;
+	color: #2f6a94;
+	background-color: #f8f2e4;
+	text-decoration: none;
+	}	
+		
+A:hover	{	
+	font-weight: bold;
+	text-decoration:	underline;
+	color:	#3333cc;
+	text-decoration: none;
+	}
+	
+SMALL	{	
+	font-size:	.7em;
+	}	
+
+BIG	{	
+	font-size:	1.17em;
+	}	
+
+BLOCKQUOTE, PRE	{	
+	font-family:	Courier New, monospace;
+	}	
+	
+
+UL LI	{	
+	list-style-type:	square ;
+	}	
+
+UL LI LI	{	
+	list-style-type:	disc;
+	}	
+
+UL LI LI LI	{	
+	list-style-type:	circle;
+	}	
+	
+OL LI	{	
+	list-style-type:	decimal;
+	}	
+
+OL OL LI	{	
+	list-style-type:	lower-alpha;
+	}	
+
+OL OL OL LI	{	
+	list-style-type:	lower-roman;
+	}	
+
+IMG 	{
+	margin-top: 5px;
+	margin-left: 10px;
+	margin-right: 10px;
+	}
+INPUT, select, table
+{
+	font-weight: normal;
+	font-size: 8pt;
+	word-spacing: normal;
+	text-transform: none;
+	font-family: Verdana;
+	letter-spacing: normal;
+	background-color: white;
+}
+.CssBlank{
+	background-color: white;
+}
+.CssBody{
+	background-color: #f8f2e4;
+}
+.CssLink
+{
+	color: #2f6a94;
+	background-color: #f8f2e4;	
+	cursor:hand;
+}
+
+.Loading
+{
+	font-size: 11px;
+	color: black;
+	text-indent: 5px;
+	font-family: Tahoma;
+	text-decoration: none;
+}
+.DottedDropFont
+{
+	border-right: #dee7d6 1px dotted;
+	border-top: #dee7d6 1px dotted;
+	font-weight: normal;
+	font-size: 11px;
+	border-left: #dee7d6 1px dotted;
+	color: black;
+	border-bottom: #dee7d6 1px dotted;
+	font-family: Arial;
+	background-color: #ffffff;
+	text-decoration: none;
+}
+.DottedTextAreaCss
+{
+	border-right: #d6d7ce 1px dotted;
+	border-top: #d6d7ce 1px dotted;
+	font-size: 11px;
+	overflow: auto;
+	border-left: #d6d7ce 1px dotted;
+	color: #000000;
+	text-indent: 3px;
+	border-bottom: #d6d7ce 1px dotted;
+	font-family: Arial;
+	text-decoration: none;
+}
+.PhoenixHypCss
+{
+	font-size: 11px;
+	color: #000000;
+	direction: rtl;
+	text-indent: 5px;
+	border-bottom: #d6d7ce 1px inset;
+	font-family: Arial;
+	background-color: transparent;
+	text-decoration: underline;
+}
+.PhoenixCss
+{
+	font-size: 11px;
+	color: #000000;
+	direction: rtl;
+	text-indent: 5px;
+	border-bottom: #d6d7ce 1px inset;
+	font-family: Arial;
+	background-color: transparent;
+	text-decoration: none;
+}
+.TabCss
+{
+	font-weight: bold;
+	font-size: 9px;
+	color: #896d44;
+	font-family: Tahoma;
+	background-color: transparent;
+	text-decoration: none;
+}
+.DTabBG
+{
+	font-weight: bold;
+	font-size: 11px;
+	color: black;
+	font-family: Arial;
+	background-color: #f2eee5;
+	text-decoration: none;
+}
+.TabBG
+{
+	font-weight: normal;
+	font-size: 11px;
+	color: black;
+	font-family: Arial;
+	background-color: #decfb9;
+	text-decoration: none;
+}
+.TabHyp
+{
+	font-weight: normal;
+	font-size: 10px;
+	text-transform: capitalize;
+	color: black;
+	font-family: Arial;
+	text-decoration: none;
+}
+.HTabHyp
+{
+	font-weight: bold;
+	font-size: 11px;
+	text-transform: capitalize;
+	color: #d8676e;
+	font-family: Arial;
+	text-decoration: none;
+}
+.HideHeader
+{
+	display: none;
+}
+.Head_Strip_Bg
+{
+	background-color: #C7AD86;
+}
+.Bottom_Strip_Bg
+{
+	border-top: #ffffff 1px solid;
+	background-color: #efe5d7;
+}
+.Left_Strip_Bg
+{
+	font-weight: normal;
+	font-size: 12px;
+	color: #363430;
+	text-indent: 5px;
+	border-bottom: #ffffff 1px solid;
+	font-family: Arial;
+	background-color: #e9dfd1;
+	text-decoration: none;
+}
+.Left_Strip_BgOver
+{
+	font-weight: bold;
+	font-size: 12px;
+	color: #d8676e;
+	text-indent: 5px;
+	border-bottom: #ffffff 1px solid;
+	font-family: Arial;
+	background-color: #fcefda;
+	text-decoration: none;
+}
+.Display_Page_Color
+{
+	background-color: #f2eee5;
+}
+.Meun_Strip_Font
+{
+	font-weight: normal;
+	font-size: 11px;
+	color: #363430;
+	text-indent: 5px;
+	font-family: Arial;
+	text-decoration: none;
+}
+.Meun_Strip_FontOver
+{
+	font-weight: bold;
+	font-size: 11px;
+	color: #d8676e;
+	text-indent: 5px;
+	font-family: Arial;
+	text-decoration: none;
+}
+.Page_Bg
+{
+	background-color: #ffffff;
+}
+.Page_Head
+{
+	font-weight: bold;
+	font-size: 12px;
+	vertical-align: sub;
+	color: #3a3937;
+	text-indent: 5px;
+	font-family: Arial;
+	background-color: transparent;
+	text-decoration: none;
+}
+.ModuleHead
+{
+	font: caption;
+	color: #000000;
+	background-color: transparent;
+	text-decoration: none;
+}
+.Report_TextRight
+{
+	font-size: 11px;
+	color: #000000;
+	direction: rtl;
+	text-indent: 5px;
+	border-bottom: #d6d7ce 1px inset;
+	font-family: Arial;
+	background-color: transparent;
+	text-decoration: none;
+}
+.Legend_Text
+{
+	padding-right: 3px;
+	font-size: 11px;
+	clip: rect(auto auto auto auto);
+	color: #000000;
+	text-indent: 5px;
+	border-bottom: #d6d7ce 1px inset;
+	font-family: 'Courier New' , Arial;
+	background-color: #f2eee5;
+	text-decoration: none;
+}
+.Legend_Head
+{
+	font-weight: bold;
+	font-size: 11px;
+	color: #000000;
+	text-indent: 5px;
+	border-bottom: #d6d7ce 1px inset;
+	font-family: 'Courier New' , Arial;
+	background-color: #f2eee5;
+	text-decoration: none;
+}
+.Report_Head
+{
+	border-top: #d6d7ce 1px dotted;
+	font-weight: bold;
+	font-size: 8pt;
+	color: #000000;
+	text-indent: 0px;
+	border-bottom: #d6d7ce 1px dotted;
+	font-family: Tahoma, Arial;
+	background-color: #eddec7;
+	text-decoration: none;
+}
+.Report_Head11
+{
+	font-weight: bold;
+	font-size: 8pt;
+	color: #000000;
+	border-bottom: #d6d7ce 1px inset;
+	font-family: Arial;
+	background-color: transparent;
+	text-decoration: none;
+}
+.Report_Text11
+{
+	font-size: 8pt;
+	color: #3a3937;
+	font-family: Arial;
+	border-bottom: #d6d7ce 1px inset;
+	text-decoration: none;
+}
+.Report_Text
+{
+	font-size: 8pt;
+	color: #3a3937;
+	text-indent: 0pt;
+	border-bottom: #d6d7ce 1px dotted;
+	font-family: Tahoma, Arial;
+	text-decoration: none;
+}
+.Report_Data
+{
+	font-size: 11px;
+	color: #3a3937;
+	text-indent: 5px;
+	font-family: Arial;
+	border-bottom: #d6d7ce 0px inset;
+	background-color: transparent;
+	text-decoration: none;
+	
+}
+.MessageTextArea
+{
+	font-size: 11px;
+	overflow: auto;
+	color: #000000;
+	border-top-style: none;
+	text-indent: 3px;
+	font-family: Arial;
+	border-right-style: none;
+	border-left-style: none;
+	background-color: transparent;
+	text-decoration: none;
+	border-bottom-style: none;
+}
+.Report_Text1
+{
+	padding-right: 5px;
+	padding-left: 5px;
+	font-size: 11px;
+	padding-bottom: 5px;
+	color: #000000;
+	padding-top: 5px;
+	border-bottom: #d6d7ce 1px inset;
+	font-family: Arial;
+	background-color: #e9eee2;
+	text-decoration: none;
+}
+
+.Label_Head
+{
+	font-weight: normal;
+	font-size: 10px;
+	color: #3a3937;
+	text-indent: 5px;
+	font-family: Verdana, Arial;
+	background-color: transparent;
+	text-decoration: none;
+}
+.Label_HeadMenu
+{
+	font-weight: normal;
+	font-size: 10px;
+	color: #3a3937;
+	text-indent: 5px;
+	font-family: Verdana, Arial;
+	background-color: transparent;
+	border-bottom: #d6d7ce 1px inset;
+	background-color: transparent;
+	text-decoration: none;
+}
+
+.Hyp_Link
+{
+	font-size: 8pt;
+	color: #3a3937;
+	text-indent: 5px;
+	font-family: Arial;
+	text-decoration: underline;
+}
+
+.Hyp_Link1
+{
+	font-size: 11px;
+	color: #3a3937;
+	text-indent: 5px;
+	font-family: Arial;
+	background-color: transparent;
+	text-decoration: underline;
+}
+
+.SubLabel_HeadMenu
+{
+	border-bottom: #d6d7ce 1px inset;
+	background-color: transparent;
+	font-weight: bold;
+	font-size: 10px;
+	color: #3a3937;
+	text-indent: 5px;
+	font-family: Verdana, Arial;
+	background-color: transparent;
+	text-decoration: none;
+}
+.SubLabel_Head
+{
+	font-size: 11px;
+	color: #3a3937;
+	text-indent: 5px;
+	font-family: Arial, Verdana;
+	background-color: transparent;
+	text-decoration: none;
+}
+.SubLabel_Head_DotLine
+{
+	border-right: #d6d7ce 1px dotted;
+	border-top: #d6d7ce 1px dotted;
+	font-size: 11px;
+	color: #3a3937;
+	text-indent: 5px;
+	border-bottom: #d6d7ce 1px dotted;
+	font-family: Arial, Verdana;
+	background-color: transparent;
+	text-decoration: none;
+}
+.SubPage_Head
+{
+	font-weight: bold;
+	font-size: 11px;
+	color: #3a3937;
+	text-indent: 5px;
+	font-family: Arial, Verdana;
+	height: 35px;
+	background-color: transparent;
+	text-decoration: none;
+}
+.Label_Text
+{
+	font-size: 10px;
+	color: #3a3937;
+	text-indent: 5px;
+	font-family: Verdana, Arial;
+	background-color: transparent;
+	text-decoration: none;
+}
+.Report_HeadRight
+{
+	font-weight: bold;
+	font-size: 11px;
+	color: #000000;
+	direction: rtl;
+	text-indent: 5px;
+	border-bottom: #d6d7ce 1px inset;
+	font-family: Arial;
+	background-color: transparent;
+	text-decoration: none;
+}
+.Sub_Head
+{
+	font-weight: bold;
+	font-size: 12px;
+	color: #000000;
+	text-indent: 5px;
+	font-family: Arial;
+	background-color: #e9eee2;
+	text-decoration: none;
+}
+.TextArea
+{
+	border-right: #d6d7ce 1px solid;
+	border-top: #d6d7ce 1px solid;
+	font-weight: normal;
+	font-size: 12px;
+	border-left: #d6d7ce 1px solid;
+	color: black;
+	border-bottom: #d6d7ce 1px solid;
+	font-family: Arial;
+	background-color: #ffffff;
+	text-decoration: none;
+}
+.txtFont
+{
+	border-right: #d6d7ce 1px solid;
+	border-top: #d6d7ce 1px solid;
+	font-weight: normal;
+	font-size: 12px;
+	border-left: #d6d7ce 1px solid;
+	color: black;
+	border-bottom: #d6d7ce 1px solid;
+	font-family: Arial;
+	height: 18px;
+	background-color: #ffffff;
+	text-decoration: none;
+}
+.txtGird
+{
+	border-right: #f2e7db 1px solid;
+	border-top: #f2e7db 1px solid;
+	font-weight: normal;
+	font-size: 12px;
+	border-left: #f2e7db 1px solid;
+	color: black;
+	border-bottom: #f2e7db 1px solid;
+	font-family: Arial;
+	height: 18px;
+	background-color: #ffffff;
+	text-decoration: none;
+}
+.txtRightFont
+{
+	border-right: #595959 1px solid;
+	border-top: #595959 1px solid;
+	font-weight: normal;
+	font-size: 12px;
+	border-left: #595959 1px solid;
+	color: black;
+	border-bottom: #595959 1px solid;
+	font-family: Arial;
+	height: 18px;
+	background-color: #ffffff;
+	text-align: right;
+	text-decoration: none;
+}
+.txtRightTextGird
+{
+	border-right: #f2e7db 1px solid;
+	border-top: #f2e7db 1px solid;
+	font-weight: normal;
+	font-size: 12px;
+	border-left: #f2e7db 1px solid;
+	color: black;
+	border-bottom: #f2e7db 1px solid;
+	font-family: Arial;
+	height: 18px;
+	background-color: #ffffff;
+	text-align: right;
+	text-decoration: none;
+}
+.DropFont
+{
+	border-right: #dee7d6 1px outset;
+	border-top: #dee7d6 1px outset;
+	font-weight: normal;
+	font-size: 11px;
+	border-left: #dee7d6 1px outset;
+	color: black;
+	border-bottom: #dee7d6 1px outset;
+	font-family: Arial;
+	background-color: #ffffff;
+	text-decoration: none;
+}
+.ListFont
+{
+	border-right: #dee7d6 1px outset;
+	border-top: #dee7d6 1px outset;
+	font-weight: normal;
+	font-size: 11px;
+	border-left: #dee7d6 1px outset;
+	color: black;
+	border-bottom: #dee7d6 1px outset;
+	font-family: Arial;	
+	text-decoration: none;
+}
+.ErrMsg
+{
+	font-weight: bold;
+	font-size: 11px;
+	color: #ff0000;
+	text-indent: 5px;
+	font-family: Tahoma, Arial;
+	background-color: transparent;
+	text-decoration: none;
+}
+.Msg
+{
+	font-weight: normal;
+	font-size: 12px;
+	color: #ff621b;
+	text-indent: 5px;
+	font-family: Arial;
+	background-color: transparent;
+	text-decoration: none;
+}
+.HeadCss
+{
+	font-weight: bold;
+	font-size: 11px;
+	color: #0b718e;
+	font-family: Arial;
+	text-decoration: none;
+}
+.HeadFont
+{
+	font-weight: normal;
+	font-size: 11px;
+	color: #0b718e;
+	font-family: Arial;
+	text-decoration: none;
+}
+.HeadText
+{
+	font-weight: normal;
+	font-size: 11px;
+	color: black;
+	font-family: Arial;
+	text-decoration: none;
+}
+.SideBar
+{
+	font-weight: bold;
+	font-size: 11px;
+	color: #b2b4b5;
+	font-family: Arial;
+	text-decoration: none;
+}
+.TableBorder
+{
+	border-right: #dee7d6 1px outset;
+	border-top: #dee7d6 1px outset;
+	border-left: #dee7d6 1px outset;
+	border-bottom: #dee7d6 1px outset;
+	background-color: #e7efe7;
+}
+.ButBig
+{
+	font-size: 11px;
+	background-image: url(../btn/big.gif);
+	width: 122px;
+	color: #ffffff;
+	border-top-style: none;
+	line-height: normal;
+	font-family: Arial;
+	border-right-style: none;
+	border-left-style: none;
+	letter-spacing: normal;
+	height: 28px;
+	text-align: center;
+	text-decoration: none;
+	border-bottom-style: none;
+}
+.ButMedium
+{
+	font-size: 11px;
+	background-image: url(../btn/medium.gif);
+	width: 101px;
+	color: #ffffff;
+	border-top-style: none;
+	line-height: normal;
+	font-family: Arial;
+	border-right-style: none;
+	border-left-style: none;
+	letter-spacing: normal;
+	height: 26px;
+	text-align: center;
+	text-decoration: none;
+	border-bottom-style: none;
+}
+.ButSmall
+{
+	font-size: 11px;
+	background-image: url(../btn/small.gif);
+	width: 75px;
+	color: #ffffff;
+	border-top-style: none;
+	line-height: normal;
+	font-family: Arial;
+	border-right-style: none;
+	border-left-style: none;
+	letter-spacing: normal;
+	height: 28px;
+	text-align: center;
+	text-decoration: none;
+	border-bottom-style: none;
+}
+.ButClose
+{
+	font-size: 11px;
+	background-image: url(../Images/close_button.gif);
+	width: 46px;
+	color: #ffffff;
+	border-top-style: none;
+	line-height: normal;
+	font-family: Arial;
+	border-right-style: none;
+	border-left-style: none;
+	letter-spacing: normal;
+	height: 17px;
+	text-align: center;
+	text-decoration: none;
+	border-bottom-style: none;
+}
+.ButReAssign
+{
+	font-size: 11px;
+	background-image: url(../Images/reassign.gif);
+	width: 60px;
+	color: #ffffff;
+	border-top-style: none;
+	line-height: normal;
+	font-family: Arial;
+	border-right-style: none;
+	border-left-style: none;
+	letter-spacing: normal;
+	height: 17px;
+	text-align: center;
+	text-decoration: none;
+	border-bottom-style: none;
+}
+.ButSmallest
+{
+	font-size: 11px;
+	background-image: url(../btn/smallest.gif);
+	width: 45px;
+	color: #ffffff;
+	border-top-style: none;
+	line-height: normal;
+	font-family: Arial;
+	border-right-style: none;
+	border-left-style: none;
+	letter-spacing: normal;
+	height: 28px;
+	text-align: center;
+	text-decoration: none;
+	border-bottom-style: none;
+}
+.GridFont
+{
+	font-size: 12px;
+	color: #000000;
+	font-family: Arial;
+	text-decoration: none;
+}
+
+
+.Div_Len
+{
+	overflow: auto;
+	width: 600px;
+}
+.LoginBgColor
+{
+	background-color: #595959;
+}
+.LoginText
+{
+	border-right: #595959 1px solid;
+	border-top: #595959 1px solid;
+	font-size: 9px;
+	border-left: #595959 1px solid;
+	color: black;
+	border-bottom: #595959 1px solid;
+	font-family: 'arial';
+	height: 14px;
+	}
+.LoginStyle
+{
+	background-image: url(Images/login_button.jpg);
+	background-repeat: no-repeat;
+}
+.HideTextArea
+{
+	font-weight: normal;
+	font-size: 10px;
+	color: #3a3937;
+	text-indent: 5px;
+	color: #3a3937;
+	border-top-style: none;
+	font-family: Arial;
+	border-right-style: none;
+	border-left-style: none;
+	background-color: #f2eee5;
+	text-decoration: none;
+	border-bottom-style: none;
+}
+.TaskClose
+{
+	font-size: 11px;
+	background-image: url(../Images/close_taskGray.gif);
+	width: 38px;
+	cursor: hand;
+	color: #ffffff;
+	border-top-style: none;
+	line-height: normal;
+	font-family: Arial;
+	border-right-style: none;
+	border-left-style: none;
+	letter-spacing: normal;
+	height: 14px;
+	text-align: center;
+	text-decoration: none;
+	border-bottom-style: none;
+}
+.TaskTerminate
+{
+	font-size: 11px;
+	background-image: url(../Images/close_taskRed.gif);
+	width: 38px;
+	cursor: hand;
+	color: #ffffff;
+	border-top-style: none;
+	line-height: normal;
+	font-family: Arial;
+	border-right-style: none;
+	border-left-style: none;
+	letter-spacing: normal;
+	height: 14px;
+	text-align: center;
+	text-decoration: none;
+	border-bottom-style: none;
+}
+.TaskForwarded
+{
+	font-size: 11px;
+	background-image: url(../Images/Forwarded.gif);
+	width: 13px;
+	cursor: hand;
+	color: #ffffff;
+	border-top-style: none;
+	line-height: normal;
+	font-family: Arial;
+	border-right-style: none;
+	border-left-style: none;
+	letter-spacing: normal;
+	height: 9px;
+	text-align: center;
+	text-decoration: none;
+	border-bottom-style: none;
+}
+.TaskForward
+{
+	font-size: 11px;
+	background-image: url(../Images/Forward.gif);
+	width: 16px;
+	cursor: hand;
+	color: #ffffff;
+	border-top-style: none;
+	line-height: normal;
+	font-family: Arial;
+	border-right-style: none;
+	border-left-style: none;
+	letter-spacing: normal;
+	height: 16px;
+	text-align: center;
+	text-decoration: none;
+	border-bottom-style: none;
+}
+.MenuItem
+{
+	font: caption;
+	color: black;
+	text-decoration: none;
+}
+.Tabpadding
+{
+	padding-right: 1px;
+	padding-left: 1px;
+}
+.Test
+{
+	font-size: 12px;
+	color: black;
+	font-family: "HIMALAYA TT FONT";
+	text-decoration: none;
+}
+.leftTdBorder
+{
+	border-left: #bfbcb6 1px solid;
+}
+.leftTdBorderUn
+{
+	border-top: #bfbcb6 1px solid;
+	border-left: #bfbcb6 1px solid;
+}
+.TopTdBorder
+{
+	border-top: #bfbcb6 1px solid;
+}
+.TabTdBorder
+{
+	border-right: #bfbcb6 1px solid;
+	border-left: #bfbcb6 1px solid;
+}
+.TabtdBottenBorder
+{
+	border-bottom: #bfbcb6 1px solid;
+}
+.VisitLeft_Strip_Bg
+{
+	font-weight: bold;
+	font-size: 12px;
+	color: #363430;
+	text-indent: 5px;
+	border-bottom: #ffffff 1px solid;
+	font-family: Arial;
+	background-color: #f2eee5;
+	text-decoration: none;
+}
+
+.Report_MainHeading
+{
+	font-weight: bold;
+	font-size: 13px;
+	color: #000000;
+	text-indent: 5px;
+	border-bottom: #d6d7ce 1px inset;
+	font-family: Arial;
+	background-color: #ccba9d;
+	text-decoration: none;
+}
+
+.Report_HeadColor
+{
+	font-weight: bold;
+	font-size: 11px;
+	color: #000000;
+	text-indent: 0px;
+	border-bottom: #d6d7ce 1px inset;
+	font-family: Arial;
+	background-color: #ccba9d;
+	text-decoration: none;
+}
+
+.TabBGColor
+{
+	border-right: #878787 1px solid;
+	border-top: #878787 1px solid;
+	border-left: #878787 1px solid;
+	background-color: #e9dfd1;
+}
+
+.DivBGColor
+{
+	border-right: #878787 1px solid;
+	border-left: #878787 1px solid;
+	border-bottom: #878787 1px solid;
+	background-color: #e9dfd1;
+}
+
+.TabOpen
+{
+	font-weight: bold;
+	font-size: 11px;
+	background-image: url(../Images/opened_tab.gif);
+	width: 140px;
+	cursor: hand;
+	color: #000000;
+	font-family: Tahoma, 'Courier New';
+	height: 22px;
+	text-decoration: none;
+}
+
+.TabClosed
+{
+	font-weight: normal;
+	font-size: 11px;
+	background-image: url(../Images/opened_tab.gif);
+	width: 140px;
+	cursor: hand;
+	color: #000000;
+	font-family: Tahoma, 'Courier New';
+	height: 22px;
+	text-decoration: none;
+}
+.DivLoading
+{
+	font-weight: bold;
+	font-size: 12px;
+	vertical-align: super;
+	overflow: auto;
+	width: 420px;
+	font-family: 'Courier New';
+	height: 250px;
+	text-align: center;
+	text-decoration: none;
+}
+.TabHead
+{
+	font-weight: bold;
+	font-size: 11px;
+	color: #000000;
+	text-indent: 5px;
+	font-family: Tahoma;
+	background-color: transparent;
+	text-decoration: none;
+}
+.TabSubText
+{
+	font-size: 11px;
+	color: black;
+	font-family: Arial,Verdana,'Courier New';
+	text-indent: 5px;
+	text-decoration: none;
+	/*list-style-image:url(../Images/arrow.gif);*/
+}
+.OpenTask
+{
+	font-size: 11px;
+	color: #0000ff;
+	text-indent: 5px;
+	font-family: Arial,Verdana, 'Courier New';
+	text-decoration: none;
+}
+.RowBGColor
+{
+	background-color: #878787;
+}
+.PoweredBy
+{
+	font-weight: normal;
+	font-size: 11px;
+	color: #686868;
+	font-family: Arial;
+	text-decoration: none;
+}
+.Phoenix
+{
+	font-weight: normal;
+	font-size: 11px;
+	color: #076079;
+	font-family: Arial;
+	text-decoration: none;
+}
+.TableTab
+{
+	background-position: center bottom;
+	background-attachment: fixed;
+	background-image: url(../Images/tab_e.gif);
+	background-repeat: no-repeat;
+}
+.NewsHeadlines
+{
+	font-weight: normal;
+	font-size: 11px;
+	color: #3a3937;/*#896d44*/
+	font-family: Arial;
+	text-decoration: none;
+}
+.ListBoxCss
+{
+	font-size: 11px;
+	color: #000000;
+	font-family: Arial;
+	text-decoration: none;
+}
+.QUE_HEAD
+{
+	font-weight: bold;
+	font-size: 12px;
+	color: #000000;
+	font-family: Arial;
+	text-decoration: underline;
+}
+.QUE_CSS
+{
+	font-size: 11px;
+	color: #000000;
+	font-family: Arial;
+	text-decoration: none;
+}
+.Ques_Style
+{
+	font-weight: bold;
+	font-size: 11px;
+	color: #3a3937;
+	text-indent: 5px;
+	font-family: Arial, Verdana;
+	background-color: transparent;
+	text-decoration: none;
+}
+.LastDate
+{
+	background-color: #e7ceb6;
+}
+.ExceededDate
+{
+	background-color: #DAB08B;
+}
+.TextArea_Transparent
+{
+	border-right: #d6d7ce 1px solid;
+	border-top: #d6d7ce 1px solid;	
+	border-bottom: #d6d7ce 1px solid;
+	border-left: #d6d7ce 1px solid;
+	font-weight: normal;
+	font-size: 12px;	
+	color: black;	
+	font-family: Arial;	
+	background-color: Transparent;
+	text-decoration: none;
+}
+.LableCss
+{
+	font-weight: normal;
+	font-size: 11px;
+	color: #896d44;
+	text-indent: 5px;
+	font-family: Arial, Tahoma;
+	background-color: transparent;
+	text-decoration: none;
+}
+.Cell_LeftBreak
+{
+	font-size: 8pt;
+	color: #3a3937;
+	text-indent: 5pt;
+	font-family: Arial;
+	border-bottom: #d6d7ce 1px dotted;
+	border-right: #d6d7ce 1px dotted;
+	text-decoration: none;
+}
+.Cell_CenterBreak
+{
+	border-right: #d6d7ce 1px dotted;
+	font-size: 8pt;
+	color: #3a3937;
+	text-indent: 5pt;
+	border-bottom: #d6d7ce 1px dotted;
+	font-family: Arial;
+	text-align: center;
+	text-decoration: none;
+}
+.Cell_RightBreak
+{
+	border-right: #d6d7ce 1px dotted;
+	font-size: 8pt;
+	color: #3a3937;
+	direction: rtl;
+	text-indent: 5pt;
+	border-bottom: #d6d7ce 1px dotted;
+	font-family: Arial;
+	text-decoration: none;
+}
+.TabBar
+{
+	border-right: 0px solid;
+	border-top: 0px solid;
+	font-weight: normal;
+	font-size: 8pt;
+	background-image: url(../images/drop_left.gif);
+	border-left: 0px solid;
+	width: 86px;
+	border-bottom: 0px solid;
+	font-family: Arial;
+	height: 14px;
+	background-color: transparent;
+	text-decoration: none;
+}
+.TabDropBar
+{
+	border-right: 0px solid;
+	border-top: 0px solid;
+	font-weight: bold;
+	font-size: 8pt;
+	background-image: url(../images/drop.gif);
+	border-left: 0px solid;
+	width: 18px;
+	border-bottom: 0px solid;
+	background-repeat: no-repeat;
+	font-family: Arial;
+	height: 14px;
+	background-color: transparent;
+	text-decoration: none;
+}
+.TreeNodes
+{
+	font-weight: bold;
+	font-size: 12px;
+	color: #000000;
+	font-family: Tahoma;
+	background-color: transparent;
+	text-decoration: none;
+}
+.Header1st
+{
+	border-bottom-color: #847963;
+	color: #847963;
+	border-bottom-style: solid;
+}
+.Header2nd
+{
+	BORDER-BOTTOM-COLOR: #cdc5b1; 
+	color: #cdc5b1;
+	BORDER-BOTTOM-STYLE: solid;
+}
+.LeftCaption
+{
+	font-weight: bold;
+	color: #847963;
+}
+.ContentBorder
+{
+		BORDER-RIGHT: #cdc5b1 1px solid; 
+		BORDER-TOP: #cdc5b1 1px solid; 
+		BORDER-LEFT: #cdc5b1 1px solid; 
+		BORDER-BOTTOM: #cdc5b1 1px solid;
+}

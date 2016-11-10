@@ -1,0 +1,19 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "pshr", "http://localhost/pshr/pshr.vbproj", "{18B3FB86-02B2-4534-8B49-33D927D11A22}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Default = Debug|Default
+		Release|Default = Release|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{18B3FB86-02B2-4534-8B49-33D927D11A22}.Debug|Default.ActiveCfg = Debug|.NET
+		{18B3FB86-02B2-4534-8B49-33D927D11A22}.Debug|Default.Build.0 = Debug|.NET
+		{18B3FB86-02B2-4534-8B49-33D927D11A22}.Release|Default.ActiveCfg = Release|.NET
+		{18B3FB86-02B2-4534-8B49-33D927D11A22}.Release|Default.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
