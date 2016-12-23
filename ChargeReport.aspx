@@ -36,8 +36,8 @@
         </asp:PlaceHolder>
     </form>
     </div>
-    <div style="float:right">
-        <a href="crhelp.pdf" target="_blank" style="font-size:large">Help</a>
+    <div style="float:none; text-align: center;">
+        <a href="crhelp.pdf" target="_blank" style="font-size:large">Online Charge Report Help</a>
     </div>
     </div>
 

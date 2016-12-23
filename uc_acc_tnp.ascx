@@ -115,7 +115,7 @@
                                                     </th>
                                                     <td class="style9" style="text-align:left">
                                                         <asp:DropDownList ID="drpAccept" runat="server" Width="103px" 
-                                                            AutoPostBack="True" onselectedindexchanged="drpAccept_SelectedIndexChanged">
+                                                            onselectedindexchanged="drpAccept_SelectedIndexChanged">
                                                             <asp:ListItem Value="YES" Selected="True">Yes</asp:ListItem>
                                                             <asp:ListItem Value="NO" >No</asp:ListItem>
                                                         </asp:DropDownList>

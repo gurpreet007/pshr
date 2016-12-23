@@ -227,7 +227,7 @@ public partial class tnp_request : System.Web.UI.UserControl
         
         if (string.IsNullOrWhiteSpace(repofficer) || 
             repofficer.Length != 6 || 
-            !(repofficer.StartsWith("10") || repofficer.StartsWith("11")))
+            !(repofficer.StartsWith("10") || repofficer.StartsWith("11")||repofficer.StartsWith("19")))
         {
             lblMsg.Text = "Invalid EmpID";
             return;
@@ -250,14 +250,15 @@ public partial class tnp_request : System.Web.UI.UserControl
         }
         else if (status == "RRS")
         {
+
             //To change relieving officer
-                        //Insert values into change_rep_officer table
-                    sql = string.Format(" insert into CADRE.change_rep_officer "+
-                      "(oodate,oonum,propno,empid,old_rep_officer,old_date_rel_req,entrydate,eventcode,REQ_STATUS)"+
-                       "select * from (select oodate,oonum,propno,empid,rep_off_rel,date_rel_req,sysdate,eventcode,"+
-                       "STATUS from cadre.chargereport "+
-                      "where empid = {0} and status='RRS' and oodate = (select max(oodate) from cadre.chargereport "+
-                      "where empid = {0} AND STATUS='RRS'))", empid);
+            //Insert values into change_rep_officer table
+            sql = string.Format(" insert into CADRE.change_rep_officer "+
+                "(oodate,oonum,propno,empid,old_rep_officer,old_date_rel_req,entrydate,eventcode,REQ_STATUS)"+
+                "select * from (select oodate,oonum,propno,empid,rep_off_rel,date_rel_req,sysdate,eventcode,"+
+                "STATUS from cadre.chargereport "+
+                "where empid = {0} and status='RRS' and oodate = (select max(oodate) from cadre.chargereport "+
+                "where empid = {0} AND STATUS='RRS'))", empid);
             oracn.ExecQry(sql);
 
             // send message regarding cancel relieving request

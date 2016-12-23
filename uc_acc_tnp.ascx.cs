@@ -62,7 +62,7 @@ public partial class uc_acc_tnp : System.Web.UI.UserControl
     private void show_details(string empid)
     {
         string sql;
-
+        btnAcceptReq.Enabled = true;
         System.Data.DataSet ds = new System.Data.DataSet();
         OraDBconnection orcn = new OraDBconnection();
 
@@ -73,7 +73,7 @@ public partial class uc_acc_tnp : System.Web.UI.UserControl
 
         sql = "select pshr.get_fullname(e.empid) as name, pshr.get_desg(e.cdesgcode) as desg, " +
             "cadre.get_org_plants(e.cloccode) as loc,ea.phonecell as cell, i.photo2 as photo, " +
-            "c.rel_off_comment as relcomm, c.join_off_comment as joincomm " +
+            "c.rel_off_comment as relcomm, c.join_off_comment as joincomm,c.status " +
             "from pshr.empperso e left outer join pshr.empaddr ea on e.empid =ea.empid " +
             "left outer join img_pshr.img i on e.empid=i.empid " +
             "LEFT OUTER JOIN CADRE.chargereport c ON e.empid = c.empid " +
@@ -84,12 +84,35 @@ public partial class uc_acc_tnp : System.Web.UI.UserControl
             return;
         }
         lblEmpID.Text = empid;
+        lblMsg.Text = string.Empty;
         lblRRName.Text = ds.Tables[0].Rows[0]["name"].ToString();
         lblRRLoc.Text = ds.Tables[0].Rows[0]["loc"].ToString();
         lblRRDesg.Text = ds.Tables[0].Rows[0]["desg"].ToString();
         lblRRMob.Text = ds.Tables[0].Rows[0]["cell"].ToString();
         txtROComment.Text = ds.Tables[0].Rows[0]["relcomm"].ToString();
         txtJOComment.Text = ds.Tables[0].Rows[0]["joincomm"].ToString();
+        string st=ds.Tables[0].Rows[0]["status"].ToString();
+
+             if (st == "RRS")
+            {
+                //txtJOComment.Enabled = false;
+                txtROComment.Enabled = true;
+                txtROComment.Visible = true;
+                 lblROComment.Visible = true;
+
+                txtJOComment.Visible = false;
+                lblJOComment.Visible = false;
+                
+                
+            }
+             else if (st == "JRS")
+             {
+                 txtJOComment.Enabled = true;
+                 txtJOComment.Visible = true;
+                 lblJOComment.Visible = true;
+                 txtROComment.Visible = false;
+                 lblROComment.Visible = false;
+             }
         //load image
         if (!Convert.IsDBNull(ds.Tables[0].Rows[0]["photo"]))
         {
@@ -122,13 +145,13 @@ public partial class uc_acc_tnp : System.Web.UI.UserControl
         string sql = string.Empty;
         if (status == "RRS")
         {
-            sql = "Select rep_off_rel from cadre.chargereport where empid= " + empid + " and oonum= " + oonum + " and to_char(oodate,'dd-Mon-yyyy')='"
+            sql = "Select rep_off_rel from cadre.chargereport where empid= " + empid + " and oonum= '" + oonum + "' and to_char(oodate,'dd-Mon-yyyy')='"
                 + oodate + "' and rep_off_rel= " + repOfficerId;
                 
         }
         else if (status == "JRS")
         {
-            sql = "Select rep_off_join from cadre.chargereport where empid= " + empid + " and oonum= " + oonum + " and to_char(oodate,'dd-Mon-yyyy')='" + oodate + "' and rep_off_join= " + repOfficerId;
+            sql = "Select rep_off_join from cadre.chargereport where empid= " + empid + " and oonum= '" + oonum + "' and to_char(oodate,'dd-Mon-yyyy')='" + oodate + "' and rep_off_join= " + repOfficerId;
         }
 
         System.Data.DataSet ds = new System.Data.DataSet();
@@ -260,7 +283,7 @@ public partial class uc_acc_tnp : System.Web.UI.UserControl
         string oodate = oonum_date.Substring(oonum_date.LastIndexOf('/') + 1).Trim();
             
         panAccept.Visible = true;
-            show_details(empid);
+        show_details(empid);
     }
     protected void btnAcceptReq_Click(object sender, EventArgs e)
     {
@@ -345,6 +368,13 @@ public partial class uc_acc_tnp : System.Web.UI.UserControl
             {
                 if (String.IsNullOrWhiteSpace(txtROComment.Text))
                 {
+                    txtROComment.Enabled = true;
+                    txtROComment.Visible = true;
+                    lblROComment.Visible = true;
+
+                    txtJOComment.Visible = false;
+                    lblJOComment.Visible = false;
+                
                     lblMsg.Text = "Please enter comments for choosing No option";
                     return;
                 }
@@ -361,6 +391,12 @@ public partial class uc_acc_tnp : System.Web.UI.UserControl
             {
                 if (String.IsNullOrWhiteSpace(txtJOComment.Text))
                 {
+                   txtJOComment.Enabled = true;
+                 txtJOComment.Visible = true;
+                 lblJOComment.Visible = true;
+                 txtROComment.Visible = false;
+                 lblROComment.Visible = false;
+                    
                     lblMsg.Text = "Please enter comments for choosing No option";
                     return;
                 }
@@ -383,13 +419,7 @@ public partial class uc_acc_tnp : System.Web.UI.UserControl
     }
     protected void drpAccept_SelectedIndexChanged(object sender, EventArgs e)
     {
-        if (drpAccept.SelectedValue == "YES")
-        {
-            //txtJOComment.Enabled = false;
-            //txtROComment.Enabled = false;
-        }
-        else
-        {
+       
             string status = Session["Status"].ToString();
             if (status == "RRS")
             {
@@ -411,6 +441,6 @@ public partial class uc_acc_tnp : System.Web.UI.UserControl
                 txtROComment.Visible = false;
                 lblROComment.Visible = false;
             }
-        }
+        
     }
 }

@@ -51,14 +51,22 @@ Partial Class empdetail
             End If
         End Sub
         Private Sub Handle_Transfer_Promotion(ByVal status As String, ByVal dt_join_accept As System.DateTime,
-                                              ByVal isRelComments As Boolean, ByVal isJoinComments As Boolean)
+                                              ByVal isRelComments As Boolean, ByVal isJoinComments As Boolean, ByVal rel_skip As String)
             Dim defpage As String = "./ChargeReport.aspx"
             Session("ucontrol") = "uc_req_tnp.ascx"
             Session("Status") = status
+            Session("Rel_Skip") = rel_skip
+
             If status = "None" Then
                 lblTransferMessage.Text = "There is a change in your posting. <a href='" & defpage & "'>Click here</a> to submit Relieve Request"
             ElseIf status = "RRA" Then
-                lblTransferMessage.Text = "Your Relieve Request have been accepted. <a href='" & defpage & "'>Click here</a> to submit Joining Request"
+                If rel_skip = "1" Then
+                    lblTransferMessage.Text = "<a href='" & defpage & "'>Click here</a> to submit Joining Request"
+                Else
+
+                    lblTransferMessage.Text = "Your Relieve Request have been accepted. <a href='" & defpage & "'>Click here</a> to submit Joining Request"
+
+                End If
             ElseIf status = "RRS" And isRelComments Then
                 lblTransferMessage.Text = "Your Relieve Request is Rejected by the Officer. <a href='" & defpage & "'>Click here</a> to view the comments."
             ElseIf status = "RRS" Then
@@ -69,7 +77,7 @@ Partial Class empdetail
                 lblTransferMessage.Text = "Your Joining Request is Pending with the Officer. <a href='" & defpage & "'>Click here</a> to view Request"
             ElseIf status = "JRA" Then
                 'show transfer message for 10 days
-                Show_Message_Ndays("Your Request is Accepted. <a href='" & defpage & "'>Click here</a> to view Request", dt_join_accept, 10)
+                Show_Message_Ndays("Your Request is Accepted. <a href='" & defpage & "'>Click here</a> to view Request", dt_join_accept, 420)
             End If
         End Sub
         Private Sub Handle_Leave_Join(ByVal status As String, ByVal dt_join_accept As System.DateTime)
@@ -86,7 +94,7 @@ Partial Class empdetail
                 lblTransferMessage.Text = "Your Joining Request is pending with the officer. <a href='" & defpage & "'>Click here</a> to view request."
             ElseIf status = "JRA" Then
                 'show leave join message for 10 days
-                Show_Message_Ndays("Your Joining Request is Accepted. <a href='" & defpage & "'>Click here</a> to view Request", dt_join_accept, 10)
+                Show_Message_Ndays("Your Joining Request is Accepted. <a href='" & defpage & "'>Click here</a> to view Request", dt_join_accept, 120)
             End If
         End Sub
         Private Sub Handle_Leave_Relieve(ByVal status As String, ByVal dt_join_accept As System.DateTime)
@@ -103,7 +111,7 @@ Partial Class empdetail
                 lblTransferMessage.Text = "Your Joining Request is pending with the officer. <a href='" & defpage & "'>Click here</a> to view request."
             ElseIf status = "RRA" Then
                 'show leave join message for 10 days
-                Show_Message_Ndays("Your Leave Request is Accepted. <a href='" & defpage & "'>Click here</a> to view Request", dt_join_accept, 10)
+                Show_Message_Ndays("Your Leave Request is Accepted. <a href='" & defpage & "'>Click here</a> to view Request", dt_join_accept, 120)
             End If
         End Sub
         Private Sub Handle_Retirement(ByVal status As String, ByVal dt_relieve_accept As System.DateTime)
@@ -120,18 +128,18 @@ Partial Class empdetail
                 lblTransferMessage.Text = "Your Relieve Request is pending with the officer. <a href='" & defpage & "'>Click here</a> to view request."
             ElseIf status = "RRA" Then
                 'show retirement accepted message for 10 days
-                Show_Message_Ndays("Your Retirement Request is Accepted. <a href='" & defpage & "'>Click here</a> to view Request.", dt_relieve_accept, 10)
+                Show_Message_Ndays("Your Retirement Request is Accepted. <a href='" & defpage & "'>Click here</a> to view Request.", dt_relieve_accept, 120)
             End If
         End Sub
         Private Sub TransferActions()
             Dim sql As String
-            Dim status As String
+            Dim status, last_event, rel_skip As String
             Dim ds As New System.Data.DataSet
             Dim oracn As New OraDBconnection
             Dim oodate As New System.DateTime
             Dim dt_join_accept, dt_rel_accept As New System.DateTime
             Dim eventcode As Integer
-            Dim arrLeaveEvents() As Integer = {1, 2, 3, 4, 5, 6, 7, 8, 9, 62, 63, 86, 98}
+            Dim arrLeaveEvents() As Integer = {1, 2, 3, 4, 5, 6, 7, 8, 9, 62, 63, 86, 98, 44}
             Dim arrRetdEvents() As Integer = {11, 12, 13, 14, 15, 16, 89}
             Dim isRelComments As Boolean = False
             Dim isJoinComments As Boolean = False
@@ -139,13 +147,14 @@ Partial Class empdetail
             empid = Session("EmpId").ToString()
             sql = String.Format("select nvl(status,'None') as status, oodate, " +
                                 "date_join_accept, date_rel_accept, eventcode, " +
-                                "rel_off_comment, join_off_comment from " +
+                                "rel_off_comment, join_off_comment,last_event,rel_skip from " +
                                 "CADRE.chargereport where empid = {0} order by oodate desc", empid)
             oracn.FillData(sql, ds)
             If ds.Tables(0).Rows.Count < 1 Then
                 Return
             End If
-
+            last_event = ds.Tables(0).Rows(0)("last_event").ToString()
+            rel_skip = ds.Tables(0).Rows(0)("rel_skip").ToString()
             status = ds.Tables(0).Rows(0)("status").ToString()
             oodate = ds.Tables(0).Rows(0)("oodate").ToString()
             eventcode = ds.Tables(0).Rows(0)("eventcode").ToString()
@@ -161,7 +170,7 @@ Partial Class empdetail
 
             If (eventcode = 36 Or eventcode = 28 Or eventcode = 37) Then
                 'CTRP (36) and CPRO(28)
-                Handle_Transfer_Promotion(status, dt_join_accept, isRelComments, isJoinComments)
+                Handle_Transfer_Promotion(status, dt_join_accept, isRelComments, isJoinComments, rel_skip)
             ElseIf (eventcode = 10) Then
                 'LJON(10) - ending of any kind of leave
                 Handle_Leave_Join(status, dt_join_accept)
@@ -184,10 +193,10 @@ Partial Class empdetail
                 'Session("EmpSt") = 10
 
                 If Len(Session("EmpId")) = 0 Then
-                    Response.Redirect("login.aspx")
+                    Response.Redirect("http://www.pspcl.in")
                 End If
                 If Session("AppId") <> "L" Then
-                    Response.Redirect("login.aspx")
+                    Response.Redirect("http://www.pspcl.in")
                 End If
 
                 lMsg0.Text = Session("MsgPL")
@@ -274,7 +283,7 @@ Partial Class empdetail
                 imgEmpPhoto.ImageUrl = "ShowImage.ashx?eid=" & Session("EmpId").ToString
 
                 GetPendingRequests()
-                'icard_st()
+                icard_st()
             End If
 
             'Catch Ex As Exception
@@ -415,7 +424,7 @@ Partial Class empdetail
         End Sub
         Private Sub bLogout_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles bLogout.Click
             Session.Abandon()
-            Response.Redirect("login.aspx")
+            Response.Redirect("http://www.pspcl.in")
         End Sub
 
         Private Sub db2Control()

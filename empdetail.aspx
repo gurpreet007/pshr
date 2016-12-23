@@ -34,13 +34,13 @@
                                             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-											<td>&nbsp;<a class="CssLink" href="frmCashLess.aspx">Cashless Medical Facility</a>&nbsp;</td>
+											<td>&nbsp;<a class="CssLink" href="frmCashLess.aspx">Dependents</a>&nbsp;</td>
 											<td>&nbsp;|&nbsp;</td>
 											<td>&nbsp;<a class="CssLink" href="findemp.aspx">Find</a>&nbsp;</td>
 											<td>&nbsp;|&nbsp;</td>
 											<td style="WIDTH: 124px">&nbsp;<a class="CssLink" href="changepwd.aspx">Change Password</a>&nbsp;</td>
 											<td>&nbsp;|&nbsp;</td>
-                                            <td>&nbsp;<a class="CssLink" href="frmGpfStmt1.aspx">GPF</a>&nbsp;</td>
+                                            <td>&nbsp;<a class="CssLink" href="frmGpfStmt3.aspx">GPF</a>&nbsp;</td>
                                             <td style="height: 15px">&nbsp;|&nbsp;</td>
 											<td>&nbsp;<a class="CssLink" href="frmPenSlip.aspx">Pension Slip</a>&nbsp;</td>
                                             <td style="height: 15px">&nbsp;|&nbsp;</td>
@@ -61,10 +61,6 @@
 							<tr height="20">
 								<td style="BACKGROUND-IMAGE: url('img/lowerbar.jpg'); text-align: left;" 
                                     valign="bottom" align="right"></td>
-							</tr>
-                            <tr height="20">
-								<td style="text-align: left;" 
-                                    valign="bottom" align="right"><marquee>State Bank Of Patiala Provides Personal Loans To Employees of PSPCL (Having Salary Account With SBOP) At Concessional Rate Of Interest @ 12.65% Without Check-Of-Facility. Employees Willing To Take Personal Loan May Contact SBOP Branch.</marquee></td>
 							</tr>
 							<tr>
 								<td style="text-align: left;" align="center" class="style1">
@@ -107,7 +103,7 @@
 													<tr>
 														<td colspan="2">
                                                             <asp:label id="Label19" runat="server" 
-                                                                Font-Bold="True" ForeColor="Black" Width="600px">Incase of any discrepancy get it corrected by filling <a class="CssLink" target="_blank" href="http://pspcl.in/docs/pdf/hrdata.pdf">HR Performa</a> dully attested by the DDO.</asp:label></td>
+                                                                Font-Bold="True" ForeColor="Black" Width="600px">In case of any discrepancy please contact concerned DDO.</asp:label></td>
 													</tr>
 													<tr>
 														<td colspan="2">&nbsp;</td>
