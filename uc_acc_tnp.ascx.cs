@@ -91,28 +91,28 @@ public partial class uc_acc_tnp : System.Web.UI.UserControl
         lblRRMob.Text = ds.Tables[0].Rows[0]["cell"].ToString();
         txtROComment.Text = ds.Tables[0].Rows[0]["relcomm"].ToString();
         txtJOComment.Text = ds.Tables[0].Rows[0]["joincomm"].ToString();
-        string st=ds.Tables[0].Rows[0]["status"].ToString();
+        string st = ds.Tables[0].Rows[0]["status"].ToString();
 
-             if (st == "RRS")
-            {
-                //txtJOComment.Enabled = false;
-                txtROComment.Enabled = true;
-                txtROComment.Visible = true;
-                 lblROComment.Visible = true;
+        if (st == "RRS")
+        {
+            //txtJOComment.Enabled = false;
+            txtROComment.Enabled = true;
+            txtROComment.Visible = true;
+            lblROComment.Visible = true;
 
-                txtJOComment.Visible = false;
-                lblJOComment.Visible = false;
-                
-                
-            }
-             else if (st == "JRS")
-             {
-                 txtJOComment.Enabled = true;
-                 txtJOComment.Visible = true;
-                 lblJOComment.Visible = true;
-                 txtROComment.Visible = false;
-                 lblROComment.Visible = false;
-             }
+            txtJOComment.Visible = false;
+            lblJOComment.Visible = false;
+
+
+        }
+        else if (st == "JRS")
+        {
+            txtJOComment.Enabled = true;
+            txtJOComment.Visible = true;
+            lblJOComment.Visible = true;
+            txtROComment.Visible = false;
+            lblROComment.Visible = false;
+        }
         //load image
         if (!Convert.IsDBNull(ds.Tables[0].Rows[0]["photo"]))
         {
@@ -127,16 +127,18 @@ public partial class uc_acc_tnp : System.Web.UI.UserControl
     }
     protected void Page_Load(object sender, EventArgs e)
     {
-        lblJOComment.Visible = false;
-        lblROComment.Visible = false;
-        txtJOComment.Visible = false;
-        txtROComment.Visible = false;
+        //lblJOComment.Visible = false;
+        //lblROComment.Visible = false;
+        //txtJOComment.Visible = false;
+        //txtROComment.Visible = false;
         if (!IsPostBack)
         {
+            //Session["Status"] = "RRS";
+            //Session["EmpId"] = "104146";
             show_posting_to_officer();
         }
+        trTime.Visible = trDate.Visible = (drpAccept.SelectedValue == "BACK");
     }
-
     private bool IsReportingOfficer(string empid, string oodate, string oonum)
     {
         string status = Session["Status"].ToString();
@@ -147,7 +149,7 @@ public partial class uc_acc_tnp : System.Web.UI.UserControl
         {
             sql = "Select rep_off_rel from cadre.chargereport where empid= " + empid + " and oonum= '" + oonum + "' and to_char(oodate,'dd-Mon-yyyy')='"
                 + oodate + "' and rep_off_rel= " + repOfficerId;
-                
+
         }
         else if (status == "JRS")
         {
@@ -158,7 +160,6 @@ public partial class uc_acc_tnp : System.Web.UI.UserControl
         oracn.FillData(sql, ref ds);
         return ds.Tables[0].Rows.Count > 0;
     }
-
     private bool ChangeTables(string empid)
     {
         string sql;
@@ -171,9 +172,9 @@ public partial class uc_acc_tnp : System.Web.UI.UserControl
         System.Data.DataRow drow;
 
         //get values
-        sql = "select * from cadre.chargereport where "+
-            "status = 'JRS' and empid = " + empid + 
-            " and oodate = (select max(oodate) from cadre.chargereport "+
+        sql = "select * from cadre.chargereport where " +
+            "status = 'JRS' and empid = " + empid +
+            " and oodate = (select max(oodate) from cadre.chargereport " +
             "where status='JRS' and empid = " + empid + ") order by oodate desc";
         orcn.FillData(sql, ref ds);
 
@@ -279,11 +280,41 @@ public partial class uc_acc_tnp : System.Web.UI.UserControl
     {
         string empid = gvRequests.SelectedRow.Cells[1].Text.Trim();
         string oonum_date = gvRequests.SelectedRow.Cells[3].Text.Trim();
-        string oonum = oonum_date.Substring(0,oonum_date.LastIndexOf('/')).Trim();
+        string oonum = oonum_date.Substring(0, oonum_date.LastIndexOf('/')).Trim();
         string oodate = oonum_date.Substring(oonum_date.LastIndexOf('/') + 1).Trim();
-            
+
         panAccept.Visible = true;
         show_details(empid);
+    }
+    private DateTime GetBackDate(string empid, string status, string strTimeVal)
+    {
+        DateTime dtBackDate = DateTime.MinValue;
+        string sql = string.Format("select to_char(DATE_REL_REQ,'yyyymmdd hh24:mi:ss') as dtrelreq, " +
+            "to_char(DATE_JOIN_REQ,'yyyymmdd hh24:mi:ss')  as dtjoinreq " +
+            "from cadre.chargereport " +
+            "WHERE status='{1}' AND empid={0} AND " +
+            "oodate=(SELECT max(oodate) FROM cadre.chargereport " +
+            "WHERE empid = {0} AND status = '{1}')", empid, status);
+
+        System.Data.DataSet ds = new System.Data.DataSet();
+        OraDBconnection orcn = new OraDBconnection();
+        ds = orcn.GetData(sql);
+        string strReqDate = (status == "RRS")?
+            ds.Tables[0].Rows[0]["dtrelreq"].ToString():
+            ds.Tables[0].Rows[0]["dtjoinreq"].ToString();
+        DateTime dtReqDate;
+        bool convSuccess = DateTime.TryParseExact(strReqDate, "yyyyMMdd HH:mm:ss", 
+            System.Globalization.CultureInfo.InvariantCulture,
+            System.Globalization.DateTimeStyles.None, out dtReqDate);
+        
+        if (!convSuccess)
+            return DateTime.MinValue;
+        if(strTimeVal=="-1")
+            return DateTime.MinValue;
+
+        dtBackDate = Calendar1.SelectedDate.AddHours(double.Parse(strTimeVal));
+
+        return (dtReqDate < dtBackDate && dtBackDate<DateTime.Now)?dtBackDate:DateTime.MinValue;
     }
     protected void btnAcceptReq_Click(object sender, EventArgs e)
     {
@@ -295,9 +326,9 @@ public partial class uc_acc_tnp : System.Web.UI.UserControl
         string phonecell;
         string msg;
 
+        
         if (lblEmpID.Text == "")
         {
-            
             return;
         }
         string oonum_date = gvRequests.SelectedRow.Cells[3].Text.Trim();
@@ -312,42 +343,52 @@ public partial class uc_acc_tnp : System.Web.UI.UserControl
             panRelReq.Visible = false;
             return;
         }
-        if (drpAccept.SelectedValue == "YES")
+        if (drpAccept.SelectedValue != "NO")
         {
             //txtJOComment.Text = "";
             //txtROComment.Text = "";
+            string strAccDate = DateTime.Now.ToString("dd-MMM-yyyy HH:mm:ss");
+            DateTime dtBackDate;
+            if (drpAccept.SelectedValue == "BACK")
+            {
+                if (drpTime.SelectedValue == "-1")
+                {
+                    lblMsg.Text = "Please select Time";
+                    return;
+                }
+                dtBackDate = GetBackDate(empid, status, drpTime.SelectedValue);
+                if (dtBackDate == DateTime.MinValue)
+                {
+                    lblMsg.Text = "Back Date cannot be earlier than Request Date and later than Current Date";
+                    return;
+                }
+                strAccDate = dtBackDate.ToString("dd-MMM-yyyy HH:mm:ss");
+            }
             if (status == "RRS")
             {
                 //ChangeTables(empid);
-                
                 //remove mapping
                 orcn.ExecQry("delete from cadre.cadrmap where empid = " + empid);
 
-                sql = string.Format("UPDATE cadre.chargereport SET status='RRA', "+
-                    "date_rel_accept=sysdate, rel_off_comment='{0}', savedon=sysdate "+
-                    "WHERE status='RRS' AND empid={1} AND "+
-                    "oodate=(SELECT max(oodate) FROM cadre.chargereport WHERE empid = {1} AND status = 'RRS')", 
-                    txtROComment.Text.Trim(), empid);
-                //sql = "UPDATE cadre.chargereport set status = 'RRA', " +
-                //    "date_rel_accept = sysdate, rel_off_comment = '" + txtROComment.Text +
-                //    "', savedon=sysdate where status='RRS' and empid = " + empid;
+                sql = string.Format("UPDATE cadre.chargereport SET status='RRA', " +
+                    "date_rel_accept=to_date('{2}','dd-mon-yyyy hh24:mi:ss'), rel_off_comment='{0}', savedon=sysdate " +
+                    "WHERE status='RRS' AND empid={1} AND " +
+                    "oodate=(SELECT max(oodate) FROM cadre.chargereport WHERE empid = {1} AND status = 'RRS')",
+                    txtROComment.Text.Trim(), empid, strAccDate);
                 orcn.ExecQry(sql);
                 lblMsg.Text = "Relieve Request Accepted for empid " + empid;
             }
             else if (status == "JRS")
             {
-                if (! ChangeTables(empid))
+                if (!ChangeTables(empid))
                 {
                     return;
                 }
-                sql = string.Format("UPDATE cadre.chargereport SET status = 'JRA', "+
-                    "date_join_accept = sysdate, join_off_comment='{0}' " +
+                sql = string.Format("UPDATE cadre.chargereport SET status = 'JRA', " +
+                    "date_join_accept=to_date('{2}','dd-mon-yyyy hh24:mi:ss'), join_off_comment='{0}' " +
                     "WHERE status='JRS' AND empid={1} AND " +
                     "oodate=(select max(oodate) FROM cadre.chargereport WHERE empid={1} AND status = 'JRS')",
-                    txtJOComment.Text, empid);
-                //sql = "UPDATE cadre.chargereport set status = 'JRA', " +
-                //    "date_join_accept = sysdate, join_off_comment = '" + txtJOComment.Text +
-                //    "' where status='JRS' and empid = " + empid;
+                    txtJOComment.Text, empid, strAccDate);
                 orcn.ExecQry(sql);
                 lblMsg.Text = "Join Request Accepted for empid " + empid;
             }
@@ -374,13 +415,13 @@ public partial class uc_acc_tnp : System.Web.UI.UserControl
 
                     txtJOComment.Visible = false;
                     lblJOComment.Visible = false;
-                
+
                     lblMsg.Text = "Please enter comments for choosing No option";
                     return;
                 }
-                sql = string.Format("UPDATE cadre.chargereport SET rel_off_comment='{0}' "+
-                    "WHERE status='RRS' AND empid={1} AND "+
-                    "oodate=(SELECT max(oodate) FROM cadre.chargereport WHERE empid = {1} AND status = 'RRS')", 
+                sql = string.Format("UPDATE cadre.chargereport SET rel_off_comment='{0}' " +
+                    "WHERE status='RRS' AND empid={1} AND " +
+                    "oodate=(SELECT max(oodate) FROM cadre.chargereport WHERE empid = {1} AND status = 'RRS')",
                     txtROComment.Text.Trim(), empid);
                 //sql = "UPDATE cadre.chargereport set rel_off_comment = '" + txtROComment.Text +
                 //    "' where status='RRS' and empid = " + empid;
@@ -391,18 +432,18 @@ public partial class uc_acc_tnp : System.Web.UI.UserControl
             {
                 if (String.IsNullOrWhiteSpace(txtJOComment.Text))
                 {
-                   txtJOComment.Enabled = true;
-                 txtJOComment.Visible = true;
-                 lblJOComment.Visible = true;
-                 txtROComment.Visible = false;
-                 lblROComment.Visible = false;
-                    
+                    txtJOComment.Enabled = true;
+                    txtJOComment.Visible = true;
+                    lblJOComment.Visible = true;
+                    txtROComment.Visible = false;
+                    lblROComment.Visible = false;
+
                     lblMsg.Text = "Please enter comments for choosing No option";
                     return;
                 }
                 sql = string.Format("UPDATE cadre.chargereport SET join_off_comment='{0}' " +
                     "WHERE status='JRS' AND empid={1} AND " +
-                    "oodate=(select max(oodate) FROM cadre.chargereport WHERE empid={1} AND status = 'JRS')",txtJOComment.Text, empid);
+                    "oodate=(select max(oodate) FROM cadre.chargereport WHERE empid={1} AND status = 'JRS')", txtJOComment.Text, empid);
                 //sql = "UPDATE cadre.chargereport set join_off_comment = '" + txtJOComment.Text +
                 //    "' where status='JRS' and empid = " + empid;
                 orcn.ExecQry(sql);
@@ -419,28 +460,29 @@ public partial class uc_acc_tnp : System.Web.UI.UserControl
     }
     protected void drpAccept_SelectedIndexChanged(object sender, EventArgs e)
     {
-       
-            string status = Session["Status"].ToString();
-            if (status == "RRS")
-            {
-                //txtJOComment.Enabled = false;
-                txtROComment.Enabled = true;
+        trTime.Visible = trDate.Visible = (drpAccept.SelectedValue == "BACK");
 
-                txtJOComment.Visible = false;
-                lblJOComment.Visible = false;
-                txtROComment.Visible = true;
-                lblROComment.Visible = true;
-            }
-            else if (status == "JRS")
-            {
-                txtJOComment.Enabled = true;
-                //txtROComment.Enabled = false;
+        string status = Session["Status"].ToString();
+        if (status == "RRS")
+        {
+            //txtJOComment.Enabled = false;
+            txtROComment.Enabled = true;
 
-                txtJOComment.Visible = true;
-                lblJOComment.Visible = true;
-                txtROComment.Visible = false;
-                lblROComment.Visible = false;
-            }
-        
+            txtJOComment.Visible = false;
+            lblJOComment.Visible = false;
+            txtROComment.Visible = true;
+            lblROComment.Visible = true;
+        }
+        else if (status == "JRS")
+        {
+            txtJOComment.Enabled = true;
+            //txtROComment.Enabled = false;
+
+            txtJOComment.Visible = true;
+            lblJOComment.Visible = true;
+            txtROComment.Visible = false;
+            lblROComment.Visible = false;
+        }
+
     }
 }

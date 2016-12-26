@@ -9,6 +9,7 @@ public partial class ChargeReport : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        //Session["ucontrol"] = "uc_acc_tnp.ascx";
         String str_uc = Session["ucontrol"].ToString();
         UserControl uc = (UserControl)Page.LoadControl(str_uc);
         PlaceHolder1.Controls.Add(uc);

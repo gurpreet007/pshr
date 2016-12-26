@@ -111,13 +111,59 @@
                                                 <tr>
                                                     <th class="style6" 
                                                         style="text-align:right; background-color:#C4BDB0; color:#000000;">
-                                                        <asp:Label ID="Label7" runat="server" Text="Accept"></asp:Label>
+                                                        <asp:Label ID="Label7" runat="server" Text="Action"></asp:Label>
                                                     </th>
                                                     <td class="style9" style="text-align:left">
-                                                        <asp:DropDownList ID="drpAccept" runat="server" Width="103px" 
-                                                            onselectedindexchanged="drpAccept_SelectedIndexChanged">
-                                                            <asp:ListItem Value="YES" Selected="True">Yes</asp:ListItem>
-                                                            <asp:ListItem Value="NO" >No</asp:ListItem>
+                                                        <asp:DropDownList ID="drpAccept" runat="server" Width="200px" 
+                                                            onselectedindexchanged="drpAccept_SelectedIndexChanged" 
+                                                            AutoPostBack="True">
+                                                            <asp:ListItem Value="CURR">Accept at Current Date</asp:ListItem>
+                                                            <asp:ListItem Value="BACK" >Accept at Back Date</asp:ListItem>
+                                                            <asp:ListItem Value="NO">Do not Accept</asp:ListItem>
+                                                        </asp:DropDownList>
+                                                    </td>
+                                                </tr>
+                                                <tr id="trDate" runat="server">
+                                                    <th class="style6" 
+                                                        style="text-align:right; background-color:#C4BDB0; color:#000000;">
+                                                        <asp:Label ID="lblSelDate" runat="server" Text="Select Date"></asp:Label>
+                                                    </th>
+                                                    <td class="style9" style="text-align:left">
+                                                        <asp:Calendar ID="Calendar1" runat="server"></asp:Calendar>
+                                                    </td>
+                                                </tr>
+                                                <tr id="trTime" runat="server">
+                                                    <th class="style6" 
+                                                        style="text-align:right; background-color:#C4BDB0; color:#000000;">
+                                                        <asp:Label ID="Label1" runat="server" Text="Select Time"></asp:Label>
+                                                    </th>
+                                                    <td class="style9" style="text-align:left">
+                                                        <asp:DropDownList ID="drpTime" runat="server" Width="80px">
+                                                            <asp:ListItem Value="-1">Select</asp:ListItem>
+                                                            <asp:ListItem Value="0">00:00 AM</asp:ListItem>
+                                                            <asp:ListItem Value="1">01:00 AM</asp:ListItem>
+                                                            <asp:ListItem Value="2">02:00 AM</asp:ListItem>
+                                                            <asp:ListItem Value="3">03:00 AM</asp:ListItem>
+                                                            <asp:ListItem Value="4">04:00 AM</asp:ListItem>
+                                                            <asp:ListItem Value="5">05:00 AM</asp:ListItem>
+                                                            <asp:ListItem Value="6">06:00 AM</asp:ListItem>
+                                                            <asp:ListItem Value="7">07:00 AM</asp:ListItem>
+                                                            <asp:ListItem Value="8">08:00 AM</asp:ListItem>
+                                                            <asp:ListItem Value="9">09:00 AM</asp:ListItem>
+                                                            <asp:ListItem Value="10">10:00 AM</asp:ListItem>
+                                                            <asp:ListItem Value="11">11:00 AM</asp:ListItem>
+                                                            <asp:ListItem Value="12">12:00 PM</asp:ListItem>
+                                                            <asp:ListItem Value="13">01:00 PM</asp:ListItem>
+                                                            <asp:ListItem Value="14">02:00 PM</asp:ListItem>
+                                                            <asp:ListItem Value="15">03:00 PM</asp:ListItem>
+                                                            <asp:ListItem Value="16">04:00 PM</asp:ListItem>
+                                                            <asp:ListItem Value="17">05:00 PM</asp:ListItem>
+                                                            <asp:ListItem Value="18">06:00 PM</asp:ListItem>
+                                                            <asp:ListItem Value="19">07:00 PM</asp:ListItem>
+                                                            <asp:ListItem Value="20">08:00 PM</asp:ListItem>
+                                                            <asp:ListItem Value="21">09:00 PM</asp:ListItem>
+                                                            <asp:ListItem Value="22">10:00 PM</asp:ListItem>
+                                                            <asp:ListItem Value="23">11:00 PM</asp:ListItem>
                                                         </asp:DropDownList>
                                                     </td>
                                                 </tr>
