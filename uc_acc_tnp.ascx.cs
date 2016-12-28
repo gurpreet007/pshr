@@ -103,7 +103,12 @@ public partial class uc_acc_tnp : System.Web.UI.UserControl
             txtJOComment.Visible = false;
             lblJOComment.Visible = false;
 
-
+            //remove option of backdate joining for relieve accept
+            int backoption = drpAccept.Items.IndexOf(drpAccept.Items.FindByValue("BACK"));
+            if (backoption != -1)
+            {
+                drpAccept.Items.RemoveAt(backoption);
+            }
         }
         else if (st == "JRS")
         {
@@ -112,6 +117,13 @@ public partial class uc_acc_tnp : System.Web.UI.UserControl
             lblJOComment.Visible = true;
             txtROComment.Visible = false;
             lblROComment.Visible = false;
+
+            //add option of backdate joining for joining accept (if not already present)
+            int backoption = drpAccept.Items.IndexOf(drpAccept.Items.FindByValue("BACK"));
+            if (backoption == -1)
+            {
+                drpAccept.Items.Add(new ListItem("Accept at Back Date","BACK"));
+            }
         }
         //load image
         if (!Convert.IsDBNull(ds.Tables[0].Rows[0]["photo"]))
