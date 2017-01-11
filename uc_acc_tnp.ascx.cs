@@ -17,7 +17,7 @@ public partial class uc_acc_tnp : System.Web.UI.UserControl
         string empid = Session["EmpId"].ToString();
         OraDBconnection oracn = new OraDBconnection();
 
-        sql = "SELECT cr.empid as Empid, pshr.get_fullname(cr.empid) as Name, " +
+        sql = "SELECT cr.empid as Empid, pshr.get_fullname(cr.empid) as Name,  " +
                 "cr.oonum || ' / ' || to_char(cr.oodate,'dd-Mon-yyyy') as \"Office Order\", " +
                 "pshr.get_desg(cr.olddesgcode) || ' at ' || cadre.get_org_plants(cr.oldloccode) \"Present Loc\"," +
                 "pshr.get_desg(cr.desgcode)  || ' at ' || cadre.get_org_plants(cr.loccode) \"NEW Loc\"," +
