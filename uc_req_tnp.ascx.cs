@@ -12,7 +12,7 @@ using System.Data;
 public partial class tnp_request : System.Web.UI.UserControl
 {
     string dtformat = "dd-MON-yyyy hh:mi AM";
-    private void show_posting_to_user()
+    private void show_posting_to_user(bool showAll=false)
     {
         string empid = Session["EmpId"].ToString();
         string status = Session["Status"].ToString();
@@ -78,7 +78,11 @@ public partial class tnp_request : System.Web.UI.UserControl
             panRelReq.Visible = false;
             panRelReq0.Visible = false;
         }
-        sql += " cr.empid = " + empid + " ORDER BY cr.oodate DESC) WHERE rownum = 1";
+        sql += " cr.empid = " + empid + " ORDER BY cr.oodate DESC) ";
+        if (! showAll)
+        {
+            sql += " WHERE rownum = 1";
+        }
         System.Data.DataSet ds = new System.Data.DataSet();
         oracn.FillData(sql, ref ds);
 
@@ -139,7 +143,6 @@ public partial class tnp_request : System.Web.UI.UserControl
         ds.Clear();
         ds.Dispose();
     }
-
     protected void Clear_Repofficer_Detail()
     {
         txtRREmpid.Text = "";
@@ -149,8 +152,6 @@ public partial class tnp_request : System.Web.UI.UserControl
         lblRRMob.Text = "";
         lblMsg.Text = string.Empty;
     }
-
-
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
@@ -236,10 +237,12 @@ public partial class tnp_request : System.Web.UI.UserControl
         if (status == "None")
         {
             sql = string.Format("UPDATE cadre.chargereport SET "+
-                "rep_off_rel={0}, status='RRS', date_rel_req=sysdate "+
+                "rep_off_rel={0}, status='RRS', date_rel_req=sysdate, "+
+                "rep_off_rel_desg='{2}', rep_off_rel_loc='{3}' " +
                 "WHERE (status IS NULL OR status = 'RRS') AND eventcode IN (28,36,37) AND empid = {1} "+
                 "AND oodate = (SELECT max(oodate) FROM cadre.chargereport WHERE empid = {1} AND "+
-                "eventcode IN (28,36,37) AND (status IS NULL OR status = 'RRS'))", repofficer, empid);
+                "eventcode IN (28,36,37) AND (status IS NULL OR status = 'RRS'))", 
+                repofficer, empid, lblRRDesg.Text, lblRRLoc.Text);
             //sql = "update cadre.chargereport set " +
             //" rep_off_rel = " + repofficer + ", " +
             //" status = 'RRS', " +
@@ -250,7 +253,6 @@ public partial class tnp_request : System.Web.UI.UserControl
         }
         else if (status == "RRS")
         {
-
             //To change relieving officer
             //Insert values into change_rep_officer table
             sql = string.Format(" insert into CADRE.change_rep_officer "+
@@ -279,10 +281,12 @@ public partial class tnp_request : System.Web.UI.UserControl
             
             //Update chargereport table
             sql = string.Format("UPDATE cadre.chargereport SET " +
-                "rep_off_rel={0}, date_rel_req=sysdate " +
+                "rep_off_rel={0}, date_rel_req=sysdate, " +
+                "rep_off_rel_desg='{2}', rep_off_rel_loc='{3}' " +
                 "WHERE empid = {1} " +
                 "AND oodate = (SELECT max(oodate) FROM cadre.chargereport WHERE empid = {1} AND " +
-                "eventcode IN (28,36,37) AND (status = 'RRS' ))", repofficer, empid);
+                "eventcode IN (28,36,37) AND (status = 'RRS' ))",
+                repofficer, empid, lblRRDesg.Text, lblRRLoc.Text);
             oracn.ExecQry(sql);
             lblMsg.Text = "New Releiving Request Submitted Successfully";
             
@@ -327,10 +331,12 @@ public partial class tnp_request : System.Web.UI.UserControl
 
             //Update chargereport table
             sql = string.Format("UPDATE cadre.chargereport SET " +
-                "rep_off_join={0}, date_join_req=sysdate " +
+                "rep_off_join={0}, date_join_req=sysdate, " +
+                "rep_off_join_desg='{2}', rep_off_join_loc='{3}' " +
                 "WHERE empid = {1} " +
                 "AND oodate = (SELECT max(oodate) FROM cadre.chargereport WHERE empid = {1} AND " +
-                "eventcode IN (28,36,37) AND (status = 'JRS' ))", repofficer, empid);
+                "eventcode IN (28,36,37) AND (status = 'JRS' ))", 
+                repofficer, empid, lblRRDesg.Text, lblRRLoc.Text);
             oracn.ExecQry(sql);
             lblMsg.Text = "New Joining Request Submitted Successfully";
 
@@ -348,10 +354,12 @@ public partial class tnp_request : System.Web.UI.UserControl
         {
             //check for status is null in case of LJON (10)
             sql = string.Format("UPDATE cadre.chargereport SET " +
-                "rep_off_join={0}, status='JRS', date_join_req=sysdate " +
+                "rep_off_join={0}, status='JRS', date_join_req=sysdate, " +
+                "rep_off_join_desg='{2}', rep_off_join_loc='{3}' " +
                 "WHERE (status = 'RRA' or status = 'JRS' or status is null) AND eventcode IN (28,36,37) AND empid = {1} " +
                 "AND oodate = (SELECT max(oodate) FROM cadre.chargereport WHERE empid = {1} AND " +
-                "eventcode IN (28,36,37) AND (status = 'RRA' or status = 'JRS' or status is null))", repofficer, empid);
+                "eventcode IN (28,36,37) AND (status = 'RRA' or status = 'JRS' or status is null))",
+                repofficer, empid, lblRRDesg.Text, lblRRLoc.Text);
 
             //sql = "update cadre.chargereport set " +
             //" rep_off_join = " + repofficer + ", " +
@@ -452,7 +460,9 @@ public partial class tnp_request : System.Web.UI.UserControl
         string sql = "select empid, pshr.get_fullname(empid) as name, pshr.get_org(oldloccode) as loc, " +
             "pshr.get_desg(olddesgcode) as desg, OONUM, to_char(OODATE,'dd-mm-yyyy') as oodate, " +
             "to_char(DATE_REL_ACCEPT,'dd-mm-yyyy \"at\" hh:mi AM') as date_rel_accept , " +
-            "REP_OFF_REL, pshr.get_fullname(rep_off_rel) repOffName from cadre.chargereport " +
+            "REP_OFF_REL, pshr.get_fullname(rep_off_rel) repOffName,"+
+            "rep_off_rel_desg, rep_off_rel_loc "+
+            "from cadre.chargereport " +
             "where oonum = '" + oonum + "' and empid = " + empid;
         string pdfPath = Server.MapPath("Relieving_Report_" + empid + ".pdf");
         oracn.FillData(sql, ref ds);
@@ -489,7 +499,9 @@ public partial class tnp_request : System.Web.UI.UserControl
             "cadre.get_mapping_text_from_rowno(postjoin) as pcloc, loccode, cadre.loccode_from_rowno(postjoin) as pcloccode," +
             "pshr.get_desg(desgcode) as desg, OONUM, to_char(OODATE,'dd-mm-yyyy') as oodate, " +
             "to_char(DATE_JOIN_ACCEPT,'dd-mm-yyyy \"at\" hh:mi AM') as date_join_accept , " +
-            "REP_OFF_JOIN, pshr.get_fullname(rep_off_join) repOffName from cadre.chargereport " +
+            "REP_OFF_JOIN, pshr.get_fullname(rep_off_join) repOffName, "+
+            "rep_off_join_desg, rep_off_join_loc " +
+            "from cadre.chargereport " +
             "where oonum = '" + oonum + "' and empid = " + empid;
         string pdfPath = Server.MapPath("Joining_Report_" + empid + ".pdf");
         oracn.FillData(sql, ref ds);
@@ -524,5 +536,9 @@ public partial class tnp_request : System.Web.UI.UserControl
     protected void linkupdateMobile_Click(object sender, EventArgs e)
     {
         Response.Redirect("frmchangembemail.aspx");
+    }
+    protected void lnkShowAll_Click(object sender, EventArgs e)
+    {
+        show_posting_to_user(true);
     }
 }

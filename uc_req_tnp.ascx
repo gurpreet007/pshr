@@ -80,7 +80,11 @@
                                         </td>
 									</tr>
                                     
-                                    <tr><td>&nbsp</td></tr>
+                                    <tr><td align="left">
+                                        <asp:LinkButton ID="lnkShowAll" runat="server" onclick="lnkShowAll_Click">Show All Charge Reports</asp:LinkButton>
+                                        </td></tr>
+                                    
+                                    <tr><td>&nbsp;</td></tr>
                                     <tr>
                                         <td>
                                             <asp:Label ID="lblMobile" runat="server" ForeColor="Red"></asp:Label>
