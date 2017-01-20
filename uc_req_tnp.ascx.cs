@@ -41,42 +41,45 @@ public partial class tnp_request : System.Web.UI.UserControl
                 "FROM CADRE.chargereport cr LEFT OUTER JOIN cadre.cadr c2 ON c2.rowno = cr.postjoin " +
                 "LEFT OUTER JOIN pshr.empperso e1 ON cr.empid = e1.empid " +
                 "WHERE eventcode in (28,36,37) and ";
-        if (status == "None")
+        if (!showAll)
         {
-            lblRequest.Text = "Relieve Request";
-            btnSubReq.Text = "Submit Relieve Request";
-            panRelReq0.Visible = false;
+            if (status == "None")
+            {
+                lblRequest.Text = "Relieve Request";
+                btnSubReq.Text = "Submit Relieve Request";
+                panRelReq0.Visible = false;
 
-            sql += "(status is null or status = 'RRS') and ";
-        }
-        else if (status == "RRA")
-        {
-            lblRequest.Text = "Joining Request";
-            btnSubReq.Text = "Submit Joining Request";
-            panRelReq0.Visible = false;
+                sql += "(status is null or status = 'RRS') and ";
+            }
+            else if (status == "RRA")
+            {
+                lblRequest.Text = "Joining Request";
+                btnSubReq.Text = "Submit Joining Request";
+                panRelReq0.Visible = false;
 
-            sql += "(status = 'RRA' or status = 'JRS' or status is null) and ";
-        }
-        else if (status == "RRS")
-        {
-            lb_ChangeRepOfficer.Visible = true;
-            lb_ChangeRepOfficer.Text = "Change Relieving Officer";
-            btnSubReq.Text = "Submit Relieve Request";
-            panRelReq0.Visible = true;
-            panRelReq.Visible = false;
-        }
-        else if (status == "JRS")
-        {
-            lb_ChangeRepOfficer.Visible = true;
-            lb_ChangeRepOfficer.Text = "Change Joining Officer";
-            btnSubReq.Text = "Submit Joining Request";
-            panRelReq0.Visible = true;
-            panRelReq.Visible = false;
-        }
-        else if (status == "JRA")
-        {
-            panRelReq.Visible = false;
-            panRelReq0.Visible = false;
+                sql += "(status = 'RRA' or status = 'JRS' or status is null) and ";
+            }
+            else if (status == "RRS")
+            {
+                lb_ChangeRepOfficer.Visible = true;
+                lb_ChangeRepOfficer.Text = "Change Relieving Officer";
+                btnSubReq.Text = "Submit Relieve Request";
+                panRelReq0.Visible = true;
+                panRelReq.Visible = false;
+            }
+            else if (status == "JRS")
+            {
+                lb_ChangeRepOfficer.Visible = true;
+                lb_ChangeRepOfficer.Text = "Change Joining Officer";
+                btnSubReq.Text = "Submit Joining Request";
+                panRelReq0.Visible = true;
+                panRelReq.Visible = false;
+            }
+            else if (status == "JRA")
+            {
+                panRelReq.Visible = false;
+                panRelReq0.Visible = false;
+            }
         }
         sql += " cr.empid = " + empid + " ORDER BY cr.oodate DESC) ";
         if (! showAll)
